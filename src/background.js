@@ -6,6 +6,7 @@ import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 import path from "path";
 import { autoUpdater } from "electron-updater";
 import log from "electron-log";
+// import PHE from "print-html-element";
 
 //
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -117,6 +118,31 @@ async function createWindow() {
   //version
   ipcMain.on("app_version", (event) => {
     event.sender.send("app_version", { version: app.getVersion() });
+  });
+
+  ipcMain.on("printing", (event, arg) => {
+    for (let i = 0; i < arg.length; i++) {
+      // console.log(arg[i].name, arg[i].price, arg[i].quantity);
+      // win.webContents.printToPDF
+      win.webContents.print(
+        {
+          silent: true,
+          copies: 1,
+        },
+        (success) => {
+          if (success) {
+            console.log("imprimir");
+            // PHE.printHtml(
+            //   "<div style='display: flex; align-items: center; flex-direction: column; flex-wrap: wrap; margin-left: -40px; margin: 0px; padding: 0px 0px 0px 0px'><h1 style='margin: 0px; margin-bottom: 0px; padding: 0px 0px 0px 0px'>$ " +
+            //     arg[i].price +
+            //     "</h1><span style='font-size:18px;text-transform: uppercase; margin: 0px; padding: 0px 0px 0px 0px 0px; text-align: center'>" +
+            //     arg[i].name +
+            //     "</span></div>"
+            // );
+          }
+        }
+      );
+    }
   });
 }
 

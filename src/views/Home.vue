@@ -113,6 +113,7 @@
 <script>
 // import PHE from "print-html-element";
 import readXlsxFile from "read-excel-file";
+import { ipcRenderer } from "electron";
 export default {
   name: "Home",
   data: () => ({
@@ -208,13 +209,15 @@ export default {
       // await PHE.printHtml(
       //   "<div style='display: flex; align-items: center; flex-direction: column; flex-wrap: wrap; margin-left: -40px; margin: 0px; padding: 0px 0px 0px 0px'><h1 style='margin: 0px; margin-bottom: 0px; padding: 0px 0px 0px 0px'>$ 76.70</h1><span style='font-size:18px;text-transform: uppercase; margin: 0px; padding: 0px 0px 0px 0px 0px; text-align: center'>ns hae mul tang myun 125g</span></div>"
       // );
-      for (let i = 0; i < this.desserts.length; i++) {
-        console.log(
-          this.desserts[i].name,
-          this.desserts[i].price,
-          this.desserts[i].quantity
-        );
-      }
+
+      // for (let i = 0; i < this.desserts.length; i++) {
+      //   console.log(
+      //     this.desserts[i].name,
+      //     this.desserts[i].price,
+      //     this.desserts[i].quantity
+      //   );
+      // }
+      ipcRenderer.send("printing", this.desserts);
       // console.log("imprimir");
     },
   },
