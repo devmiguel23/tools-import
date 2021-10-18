@@ -1,0 +1,29 @@
+// @import '~sweetalert2/src/variables';
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+
+// style.scss
+@import "~sweetalert2/src/variables";
+
+// @function strip-units($number) {
+//   @return
+//    math.div($number, ($number * 0 + 1));
+// }
+$swal2-font: "Montserrat", sans-serif !important;
+$swal2-confirm-button-background-color: #066ca9 !important;
+$swal2-confirm-button-focus-box-shadow: 0 0 0 3px rgba(5, 95, 149, 0.5) !important;
+
+@import "~sweetalert2/src/sweetalert2";
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
