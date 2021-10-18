@@ -111,7 +111,7 @@
 </template>
 
 <script>
-import PHE from "print-html-element";
+// import PHE from "print-html-element";
 import readXlsxFile from "read-excel-file";
 export default {
   name: "Home",
@@ -199,16 +199,23 @@ export default {
     readExcel() {
       readXlsxFile(this.fileInput).then((rows) => {
         rows.forEach((el) => {
+          // console.log(el[0], el[1]);
           this.desserts.push({ name: el[0], price: el[1], quantity: el[2] });
         });
       });
     },
     async imprimir() {
-      await PHE.printHtml(
-        "<div style='display: flex; align-items: center; flex-direction: column; flex-wrap: wrap; margin-left: -40px; margin: 0px; padding: 0px 0px 0px 0px'><h1 style='margin: 0px; margin-bottom: 0px; padding: 0px 0px 0px 0px'>$ 76.70</h1><span style='font-size:18px;text-transform: uppercase; margin: 0px; padding: 0px 0px 0px 0px 0px; text-align: center'>ns hae mul tang myun 125g</span></div>"
-      );
-
-      console.log("imprimir");
+      // await PHE.printHtml(
+      //   "<div style='display: flex; align-items: center; flex-direction: column; flex-wrap: wrap; margin-left: -40px; margin: 0px; padding: 0px 0px 0px 0px'><h1 style='margin: 0px; margin-bottom: 0px; padding: 0px 0px 0px 0px'>$ 76.70</h1><span style='font-size:18px;text-transform: uppercase; margin: 0px; padding: 0px 0px 0px 0px 0px; text-align: center'>ns hae mul tang myun 125g</span></div>"
+      // );
+      for (let i = 0; i < this.desserts.length; i++) {
+        console.log(
+          this.desserts[i].name,
+          this.desserts[i].price,
+          this.desserts[i].quantity
+        );
+      }
+      // console.log("imprimir");
     },
   },
 };
